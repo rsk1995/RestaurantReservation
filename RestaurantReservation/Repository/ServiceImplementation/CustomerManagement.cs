@@ -16,6 +16,7 @@ namespace RestaurantReservation.Repository.ServiceImplementation
         {
             _dbContext = dbContext;
         }
+
         public async Task<bool> AddCustomer(CustomerDTO cust)
         {
 
@@ -49,7 +50,7 @@ namespace RestaurantReservation.Repository.ServiceImplementation
         {
             try
             {
-                CustomerTbl? cust = null;
+                CustomerTbl? cust = null;  
                 try
                 {
                     cust = await _dbContext.Customers.FindAsync(id);

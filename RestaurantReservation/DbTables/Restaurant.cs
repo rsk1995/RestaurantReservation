@@ -5,7 +5,7 @@ namespace RestaurantReservation.DbTables
     public class Restaurant
     {
         [Key] // Primary Key
-        public int Id { get; set; }
+        public int RId { get; set; }
 
 
         public string? Name { get; set; }
@@ -25,5 +25,7 @@ namespace RestaurantReservation.DbTables
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+
+        
     }
 }

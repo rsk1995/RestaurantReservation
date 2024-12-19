@@ -12,5 +12,9 @@ namespace RestaurantReservation
         public DbSet<Restaurant> Restaurants { get; set; }
 
         public DbSet<CustomerTbl> Customers { get; set; }
+
+        public DbSet<TableCapacity> TableStatus { get; set; }
+
+        public DbSet<ReservedBookings> ReservedBookings { get; set; }
     }
 }

@@ -19,6 +19,8 @@ builder.Services.AddDbContext<RestaurantDbContext>(options =>
 
 builder.Services.AddScoped<IRestaurant, RestaurantManagement>();
 builder.Services.AddScoped<ICustomer, CustomerManagement>();
+builder.Services.AddScoped<ITableInfo, TableManagement>();
+builder.Services.AddScoped<IReserveBooking, ReserveBookingManagement>();
 
 //builder.Services.AddControllers(options =>
 //{

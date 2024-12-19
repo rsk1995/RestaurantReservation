@@ -6,7 +6,7 @@ namespace RestaurantReservation.DbTables
     public class CustomerTbl
     {
         [Key] // Primary Key
-        public int Id { get; set; }
+        public int CId { get; set; }
 
 
         public string? Name { get; set; }

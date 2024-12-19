@@ -70,7 +70,7 @@ namespace RestaurantReservation.Controllers
         [Route("DeleteRestaurant")]
         public async Task<IActionResult> DeleteRestaurant(int rid)
         {
-            if (rid == 0)
+            if (rid < 0)
             {
                 return BadRequest("Enter restaurant id");
             }
@@ -88,9 +88,9 @@ namespace RestaurantReservation.Controllers
 
         [HttpPut]
         [Route("UpdateRestaurantInfo")]
-        public async Task<IActionResult> UpdateBookInfo(int rid, [FromBody] AddRestaurant restInfo)
+        public async Task<IActionResult> UpdateRestaurantInfo(int rid, [FromBody] AddRestaurant restInfo)
         {
-            if (rid == 0)
+            if (rid < 0)
                 return BadRequest("Enter resturant id");
             if (restInfo == null)
             {

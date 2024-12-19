@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RestaurantReservation;
 
@@ -11,9 +12,11 @@ using RestaurantReservation;
 namespace RestaurantReservation.Migrations
 {
     [DbContext(typeof(RestaurantDbContext))]
-    partial class RestaurantDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241217142750_mig4tableinfo1")]
+    partial class mig4tableinfo1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,28 +45,6 @@ namespace RestaurantReservation.Migrations
                     b.HasKey("CId");
 
                     b.ToTable("Customers");
-                });
-
-            modelBuilder.Entity("RestaurantReservation.DbTables.ReservedBookings", b =>
-                {
-                    b.Property<int>("BookingID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BookingID"));
-
-                    b.Property<int>("CId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("EventDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("TId")
-                        .HasColumnType("int");
-
-                    b.HasKey("BookingID");
-
-                    b.ToTable("ReservedBookings");
                 });
 
             modelBuilder.Entity("RestaurantReservation.DbTables.Restaurant", b =>

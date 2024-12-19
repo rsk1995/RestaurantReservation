@@ -18,6 +18,10 @@ namespace RestaurantReservation.Controllers
             _customer = customer;
         }
 
+        public CustomerMgmtController()
+        {
+        }
+
         [HttpPost]
         [Route("AddCustomer")]
 
