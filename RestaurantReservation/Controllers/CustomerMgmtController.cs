@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using RestaurantReservation.DbTables;
@@ -16,10 +17,6 @@ namespace RestaurantReservation.Controllers
         public CustomerMgmtController(ICustomer customer)
         {
             _customer = customer;
-        }
-
-        public CustomerMgmtController()
-        {
         }
 
         [HttpPost]
@@ -41,6 +38,7 @@ namespace RestaurantReservation.Controllers
             return Ok("Customer Added Successfully");
         }
 
+        [Authorize]
         [HttpGet]
         [Route("AllCustomers")]
         public async Task<ActionResult<IEnumerable<CustomerTbl>>> GetAllCust()

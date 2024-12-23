@@ -98,11 +98,11 @@ namespace RestaurantReservation.Repository.ServiceImplementation
             }
             catch (DbUpdateException ex)
             {
-                throw new RestaurantException("Error occurred while updating the customer.", ex);
+                throw new CustomerException("Error occurred while updating the customer.", ex);
             }
             catch (Exception ex)
             {
-                throw new RestaurantException("An unexpected error occurred while updating the customer.", ex);
+                throw new CustomerException("An unexpected error occurred while updating the customer.", ex);
             }
         }
     }
