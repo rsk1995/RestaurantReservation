@@ -1,14 +1,8 @@
-﻿using Moq;
+﻿using Microsoft.EntityFrameworkCore; 
 using RestaurantReservation.DbTables;
 using RestaurantReservation.DTO;
 using RestaurantReservation.Exceptions;
 using RestaurantReservation.Repository.Classes;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Xunit;
-using Microsoft.IdentityModel.Tokens;
 
 namespace RestaurantReservation.Tests
 {
@@ -28,7 +22,12 @@ namespace RestaurantReservation.Tests
             _restaurantManagement = new RestaurantManagement(_dbContext);
 
             // Seed the database with initial data
-            _dbContext.Restaurants.Add(new Restaurant { Name = "Test Restaurant", Address = "123 Test St", PhoneNumber = "1234567890", OpeningHours = "9 AM - 9 PM", Capacity = 50 });
+            _dbContext.Restaurants.Add(new Restaurant { Name = "Test Restaurant", 
+                                                        Address = "123 Test St", 
+                                                        PhoneNumber = "1234567890", 
+                                                        OpeningHours = "9 AM - 9 PM", 
+                                                        Capacity = 50 
+                                                      });
             _dbContext.SaveChanges();
         }
 
