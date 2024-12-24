@@ -3,14 +3,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RestaurantReservation.DbTables;
 using RestaurantReservation.DTO;
+using RestaurantReservation.Filters;
 using RestaurantReservation.Repository.Interfaces;
 using System.Security.Cryptography;
 using static System.Reflection.Metadata.BlobBuilder;
+
 
 namespace RestaurantReservation.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[ActionFilterImplemented]
     public class RestaurantMgmtController : ControllerBase
     {
         private readonly IRestaurant _restaurant;
@@ -38,7 +41,10 @@ namespace RestaurantReservation.Controllers
             return Ok("Restaurant Added Successfully");
         }
 
+        
         [HttpGet]
+        //[ServiceFilter(typeof(ActionFilterImplemented))]
+        
         [Route("AllRestaurant")]
         public async Task<ActionResult<IEnumerable<Restaurant>>> GetAllRests()
         {

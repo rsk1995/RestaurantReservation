@@ -31,6 +31,7 @@ namespace RestaurantReservation.Controllers
                      new Claim(JwtRegisteredClaimNames.Sub,_configuration["Jwt:Subject"]),
                      new Claim(JwtRegisteredClaimNames.Jti,Guid.NewGuid().ToString()),
                      new Claim("username",log.Username.ToString()),
+                        
                      //new Claim("Role",employee.Role.ToString())
                 };
 

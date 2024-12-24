@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using RestaurantReservation;
+using RestaurantReservation.Filters;
 using RestaurantReservation.Repository.Classes;
 using RestaurantReservation.Repository.Interfaces;
 using RestaurantReservation.Repository.ServiceImplementation;
@@ -10,9 +11,14 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+
+//builder.Services.AddScoped<ActionFilterImplemented>();
 
 builder.Services.AddAuthentication(options =>
 {
@@ -30,6 +36,13 @@ builder.Services.AddAuthentication(options =>
         ValidAudience = builder.Configuration["Jwt:Audience"],
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
     };
+});
+
+
+builder.Services.AddControllersWithViews(options =>
+{
+    options.Filters.Add<ActionFilterImplemented>();
+    options.Filters.Add<ResultFilterImplemented>();
 });
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -61,6 +74,8 @@ if (app.Environment.IsDevelopment())
 app.UseAuthentication();
 
 app.UseAuthorization();
+
+app.UseRouting();
 
 app.MapControllers();
 
